@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tic_tac_toe/Color/colors.dart';
 import 'package:tic_tac_toe/Responsiveness/responsiveness.dart';
+import 'package:tic_tac_toe/State_Management/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,10 +37,17 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 10), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> const Responsiveness()));
+    Timer(const Duration(seconds: 1), () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context)=> 
+            ChangeNotifierProvider(
+              create: (context) => AppData(),
+              child: const Responsiveness()
+            )
+        )
+      );
     });
   }
   @override
