@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tic_tac_toe/Color/colors.dart';
+
+import '../State_Management/provider.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({ Key? key }) : super(key: key);
@@ -7,7 +10,6 @@ class RegistrationPage extends StatefulWidget {
   @override
   State<RegistrationPage> createState() => _RegistrationPageState();
 }
-
 class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
@@ -38,22 +40,25 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       horizontal: 15
                     ),
                     child: Row(
-                      children: const[
-                        Text(
+                      children: [
+                        const Text(
                           'Name:',
                           style: TextStyle(
                             color: textColor
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 20.0),
+                            padding: const EdgeInsets.only(top: 20.0),
                             child: TextField(
+                              onChanged: ((value) {
+                                context.read<AppData>().playersDetail(value, 'playerOneName');
+                              }),
                               maxLength: 10,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 contentPadding: EdgeInsets.symmetric(
                                   vertical: 0,
                                   horizontal: 10
@@ -67,24 +72,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             ),
                           ),
                         ),
-                         SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
-                        Text(
+                        const Text(
                           'Using:',
                           style: TextStyle(
                             color: textColor
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 20.0),
+                            padding: const EdgeInsets.only(top: 20.0),
                             child: TextField(
+                              onChanged: ((value) {
+                                context.read<AppData>().playersDetail(value, 'playerOneUsing');
+                              }),
                               maxLength: 1,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 contentPadding: EdgeInsets.symmetric(
                                   vertical: 0,
                                   horizontal: 10
@@ -105,6 +113,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
               SizedBox(
                 height: size.height*0.16,
+                // child: Consumer<AppData>(
+                // builder: ((context, value, child) {
+                //   return Text(value.playerOneName == '' ? 'load': value.playerOneName.toString());
+                // }),
+                // ),
               ),
               Column(
                 children: [
@@ -124,22 +137,25 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       horizontal: 15
                     ),
                     child: Row(
-                      children: const[
-                        Text(
+                      children: [
+                        const Text(
                           'Name:',
                           style: TextStyle(
                             color: textColor
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 20.0),
+                            padding: const EdgeInsets.only(top: 20.0),
                             child: TextField(
+                              onChanged: ((value) {
+                                context.read<AppData>().playersDetail(value, 'playerTwoName');
+                              }),
                               maxLength: 10,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 contentPadding: EdgeInsets.symmetric(
                                   vertical: 0,
                                   horizontal: 10
@@ -153,24 +169,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             ),
                           ),
                         ),
-                         SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
-                        Text(
+                        const Text(
                           'Using:',
                           style: TextStyle(
                             color: textColor
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsets.only(top: 20.0),
+                            padding: const EdgeInsets.only(top: 20.0),
                             child: TextField(
+                              onChanged: (value) {
+                                context.read<AppData>().playersDetail(value, 'playerTwoUsing');
+                              },
                               maxLength: 1,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 contentPadding: EdgeInsets.symmetric(
                                   vertical: 0,
                                   horizontal: 10
@@ -199,9 +218,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
           primary: textColor
         ),
         onPressed: (){
-
+          Navigator.push(
+            context, MaterialPageRoute(
+              builder: (_) => const RegistrationPage()
+            )
+          );
         }, 
-        child: Text(
+        child: const Text(
           'Save & Play',
           style: TextStyle(
             // color: textColor
