@@ -5,9 +5,9 @@ class AppData with ChangeNotifier {
   final int _scoreA = 0;
   final int _scoreB = 0;
   String playerOneName = '';
-  String? playerOneUsing;
-  String? playerTwoName;
-  String? playerTwoUsing;
+  String playerOneUsing = '';
+  String playerTwoName = '';
+  String playerTwoUsing = '';
 
   List totalPlayers = [
 
@@ -20,18 +20,16 @@ class AppData with ChangeNotifier {
   void playersDetail(String value, String whichFilled) {
     switch (whichFilled) {
       case 'playerOneName':
-        playerOneName = whichFilled;
+        playerOneName = value;
         break;
       case 'playerOneUsing' :
-        playerOneUsing = whichFilled;
+        playerOneUsing = value;
         break;
       case 'playerTwoName':
-        playerOneName = whichFilled;
-        break;
-      case 'playerTwoUsing' :
-        playerOneUsing = whichFilled;
+        playerTwoName = value;
         break;
       default:
+        playerTwoUsing = value;
     }
     notifyListeners();
   }

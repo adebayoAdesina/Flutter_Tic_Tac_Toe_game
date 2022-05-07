@@ -44,10 +44,12 @@ class _SplashScreenState extends State<SplashScreen> {
           builder: (context)=> 
             ChangeNotifierProvider(
               create: (context) => AppData(),
-              builder: (context, child) {
+              
+              child: Consumer<AppData>(
+                builder: (context,provider, child) {
                 return const Responsiveness(); 
               },
-              // child: const Responsiveness()
+              )
             )
         )
       );
