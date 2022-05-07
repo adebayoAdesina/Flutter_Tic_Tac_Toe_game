@@ -18,7 +18,7 @@ class _GameState extends State<Game> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: ((context) => AppData()),
+      create: (context) => AppData(),
       builder: (context, child) {
         return Scaffold(
         backgroundColor: textColor,
@@ -49,7 +49,10 @@ class _GameState extends State<Game> {
                               width: 2,
                               color: textColor
                             ),  
-                          )
+                          ),
+                        ),
+                        child: Text(
+                          context.watch<AppData>().containerone
                         ),
                       ),
                     ),
@@ -62,6 +65,9 @@ class _GameState extends State<Game> {
                         width: width,
                         decoration: const BoxDecoration(
                           color: whiteColor,
+                        ),
+                        child: Text(
+                          context.watch<AppData>().containerTwo
                         ),
                       ),
                     ),
@@ -77,6 +83,7 @@ class _GameState extends State<Game> {
                           )
                         )
                       ),
+                      
                     )
                   ],
                 ),
@@ -182,6 +189,15 @@ class _GameState extends State<Game> {
                         )
                       ),
                     )
+                  ],
+                ),
+
+                Row(
+                  children: [
+                    Text(
+                      AppData.playerOneName
+                      // Provider<AppData>
+                    ),
                   ],
                 )
               ],

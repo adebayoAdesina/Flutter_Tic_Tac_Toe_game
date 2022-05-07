@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 class AppData with ChangeNotifier {
   final int _scoreA = 0;
   final int _scoreB = 0;
-  String playerOneName = '';
-  String playerOneUsing = '';
-  String playerTwoName = '';
-  String playerTwoUsing = '';
-  String currentUsing = '';
+  static String playerOneName = '';
+  static String playerOneUsing = '';
+  static String playerTwoName = '';
+  static String playerTwoUsing = '';
+  static String currentUsing = '';
 
   List totalPlayers = [
 
@@ -51,42 +51,47 @@ class AppData with ChangeNotifier {
         case 'containerOne':
           if (_containerOne == '') {
             _containerOne =currentUsing;
+            currentUsing = await playerTwoUsing;
             print(_containerOne);
-            currentUsing = playerTwoUsing;
+            playingGame;
           }
           break;
         case 'containerTwo':
           if (_containerTwo == '') {
             _containerTwo =currentUsing;
-            print(_containerTwo);
+            print('_containerTwo');
             currentUsing = playerTwoUsing;
+            playingGame;
           }
           break;
         default:
       }
+      notifyListeners();
     } else if (currentUsing == playerTwoUsing) {
       switch (value) {
         case 'containerOne':
           if (_containerOne == '') {
             _containerOne =currentUsing;
-            print(_containerOne);
+            print('_containerOne+');
             currentUsing = playerOneUsing;
+            playingGame;
           }
           break;
         case 'containerTwo':
           if (_containerTwo == '') {
             _containerTwo =currentUsing;
-            print(_containerTwo);
+            print('_containerTwo+');
             currentUsing = playerOneUsing;
+            playingGame;
           }
           break;
         default:
       }
+    notifyListeners();
     }
     // else {
     //   currentUsing = playerOneUsing;
     // }
-    notifyListeners();
   }
   int get scoreA => _scoreA;
   int get scoreB => _scoreB;

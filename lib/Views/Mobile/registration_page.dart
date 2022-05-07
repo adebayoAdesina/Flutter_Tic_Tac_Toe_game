@@ -234,23 +234,23 @@ class _RegistrationPageState extends State<RegistrationPage> {
             primary: textColor
           ),
           onPressed: (){
-            var read = context.read<AppData>();
-            var nameOfPlayerOne = context.read<AppData>().playerOneName == '';
-            var usingOfPlayerOne = context.read<AppData>().playerOneUsing == '';
-            var nameOfPlayerTwo = context.read<AppData>().playerTwoName == '';
-            var usingOfPlayerTwo = context.read<AppData>().playerTwoUsing == '';
+            // var read = context.read<AppData>();
+            var nameOfPlayerOne = AppData.playerOneName == '';
+            var usingOfPlayerOne = AppData.playerOneUsing == '';
+            var nameOfPlayerTwo = AppData.playerTwoName == '';
+            var usingOfPlayerTwo = AppData.playerTwoUsing == '';
             Timer(
               const Duration(
                 seconds: 1
               ), (() {
                 if (
-                  read.playerOneName != '' && read.playerOneUsing != '' &&
-                  read.playerTwoName != '' && read.playerTwoUsing != ''
+                  AppData.playerOneName != '' && AppData.playerOneUsing != '' &&
+                  AppData.playerTwoName != '' && AppData.playerTwoUsing != ''
                 ) {
-                  print(read.playerOneName);
-                  print(read.playerOneUsing);
-                  print(read.playerTwoName);
-                  print(read.playerOneUsing);
+                  print(AppData.playerOneName);
+                  print(AppData.playerOneUsing);
+                  print(AppData.playerTwoName);
+                  print(AppData.playerTwoUsing);
                   Navigator.push(
                     context, MaterialPageRoute(
                       builder: (_) => const Game()
