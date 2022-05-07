@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:tic_tac_toe/Color/colors.dart';
 import 'package:tic_tac_toe/Views/game.dart';
 
-import '../State_Management/provider.dart';
+import '../../State_Management/provider.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({ Key? key }) : super(key: key);

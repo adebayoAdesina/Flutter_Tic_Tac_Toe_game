@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tic_tac_toe/Color/colors.dart';
-import 'package:tic_tac_toe/Views/registration_page.dart';
+import 'package:tic_tac_toe/Responsiveness/responsiveness.dart';
+import 'package:tic_tac_toe/Views/Mobile/registration_page.dart';
 import 'package:tic_tac_toe/Views/scores.dart';
 
 class MobileScreen extends StatelessWidget {
@@ -29,7 +30,7 @@ class MobileScreen extends StatelessWidget {
                   onPressed: (() {
                     Navigator.push(
                       context, MaterialPageRoute(
-                        builder: (_) => const RegistrationPage()
+                        builder: (_) => const RegistrationResponsiveness()
                       )
                     );
                   }),
