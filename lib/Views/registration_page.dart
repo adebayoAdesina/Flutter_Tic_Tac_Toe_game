@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tic_tac_toe/Color/colors.dart';
+import 'package:tic_tac_toe/Views/game.dart';
 
 import '../State_Management/provider.dart';
 
@@ -120,18 +121,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                   SizedBox(
                     height: size.height*0.16,
-                    child: Consumer<AppData>(
-                    builder: ((context, value, child) {
-                      return Column(
-                        children: [
-                          Text(value.playerOneName == '' ? 'load': value.playerTwoName),
-                          Text(value.playerOneName == '' ? 'load': value.playerTwoUsing),
-                          Text(value.playerOneName == '' ? 'load': value.playerOneName),
-                          Text(value.playerOneName == '' ? 'load': value.playerOneUsing),
-                        ],
-                      );
-                    }),
-                    ),
+                    // child: Consumer<AppData>(
+                    // builder: ((context, value, child) {
+                    //   return Column(
+                    //     children: [
+                    //       Text(value.playerOneName == '' ? 'load': value.playerTwoName),
+                    //       Text(value.playerOneName == '' ? 'load': value.playerTwoUsing),
+                    //       Text(value.playerOneName == '' ? 'load': value.playerOneName),
+                    //       Text(value.playerOneName == '' ? 'load': value.playerOneUsing),
+                    //     ],
+                    //   );
+                    // }),
+                    // ),
                   ),
                   Column(
                     children: [
@@ -234,9 +235,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
           ),
           onPressed: (){
             var read = context.read<AppData>();
+            var nameOfPlayerOne = context.read<AppData>().playerOneName == '';
+            var usingOfPlayerOne = context.read<AppData>().playerOneUsing == '';
+            var nameOfPlayerTwo = context.read<AppData>().playerTwoName == '';
+            var usingOfPlayerTwo = context.read<AppData>().playerTwoUsing == '';
             Timer(
               const Duration(
-                seconds: 4
+                seconds: 1
               ), (() {
                 if (
                   read.playerOneName != '' && read.playerOneUsing != '' &&
@@ -246,7 +251,117 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   print(read.playerOneUsing);
                   print(read.playerTwoName);
                   print(read.playerOneUsing);
+                  Navigator.push(
+                    context, MaterialPageRoute(
+                      builder: (_) => const Game()
+                    )
+                  );
                 } else {
+                  showDialog(
+                    context: context, 
+                    builder: (context) {
+                      return AlertDialog(
+                        elevation: 20,
+                        titleTextStyle: const TextStyle(
+                          color: danger,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18
+                        ),
+                        title: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  nameOfPlayerOne ? Icons.warning_amber_rounded : Icons.done,
+                                  color: nameOfPlayerOne ? danger : textColor,
+                                  size: 20
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  nameOfPlayerOne ? 'Player One Name is empty': 'Player One Name is Filled',
+                                  style: TextStyle(
+                                    color: nameOfPlayerOne ? danger : textColor
+                                  )
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  usingOfPlayerOne ? Icons.warning_amber_rounded : Icons.done,
+                                  color: usingOfPlayerOne ? danger : textColor,
+                                  size: 20
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  usingOfPlayerOne ? 'Player One Using is empty': 'Player One Using is Filled',
+                                  style: TextStyle(
+                                    color: usingOfPlayerOne ? danger : textColor
+                                  )
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  nameOfPlayerTwo ? Icons.warning_amber_rounded : Icons.done,
+                                  color: nameOfPlayerTwo ? danger : textColor,
+                                  size: 20
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  nameOfPlayerTwo ? 'Player Two Name is empty': 'Player Two Name is Filled',
+                                  style: TextStyle(
+                                    color: nameOfPlayerTwo ? danger : textColor
+                                  )
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  usingOfPlayerTwo ? Icons.warning_amber_rounded : Icons.done,
+                                  color: usingOfPlayerTwo ? danger : textColor,
+                                  size: 20
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  usingOfPlayerTwo ? 'Player Two Using is empty': 'Player Two Using is Filled',
+                                  style: TextStyle(
+                                    color: usingOfPlayerTwo ? danger : textColor
+                                  )
+                                ),
+                              ],
+                            ),
+
+                          ],
+                        ),
+                        actions: [
+                          Center(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: textColor
+                              ),
+                              onPressed: (() {
+                                Navigator.pop(context);
+                              }), 
+                              child: const Text(
+                                'Ok'
+                              )
+                            ),
+                          )
+                        ],
+                      );
+                    }
+                  );
                 }
               }));
           }, 
