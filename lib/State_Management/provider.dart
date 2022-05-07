@@ -37,62 +37,136 @@ class AppData with ChangeNotifier {
   }
   String _containerOne = '';
   String _containerTwo = '';
-  final String _containerThree = '';
-  final String _containerFour = '';
-  final String _containerFive = '';
-  final String _containerSix = '';
-  final String _containerSeven = '';
-  final String _containerEight = '';
-  final String _containerNine = '';
+  String _containerThree = '';
+  String _containerFour = '';
+  String _containerFive = '';
+  String _containerSix = '';
+  String _containerSeven = '';
+  String _containerEight = '';
+  String _containerNine = '';
 
-  void playingGame(String value) async{
+  void playingGame(String value) {
     if (currentUsing == playerOneUsing) {
       switch (value) {
         case 'containerOne':
           if (_containerOne == '') {
             _containerOne =currentUsing;
-            currentUsing = await playerTwoUsing;
-            print(_containerOne);
-            playingGame;
+            currentUsing = playerTwoUsing;
           }
           break;
         case 'containerTwo':
           if (_containerTwo == '') {
             _containerTwo =currentUsing;
-            print('_containerTwo');
             currentUsing = playerTwoUsing;
-            playingGame;
+          }
+          break;
+        case 'containerThree':
+          if (_containerThree == '') {
+            _containerThree =currentUsing;
+            currentUsing = playerTwoUsing;
+          }
+          break;
+        case 'containerFour':
+          if (_containerFour == '') {
+            _containerFour =currentUsing;
+            currentUsing = playerTwoUsing;
+          }
+          break;
+        case 'containerFive':
+          if (_containerFive == '') {
+            _containerFive =currentUsing;
+            currentUsing = playerTwoUsing;
+          }
+          break;
+        case 'containerSix':
+          if (_containerSix == '') {
+            _containerSix =currentUsing;
+            currentUsing = playerTwoUsing;
+          }
+          break;
+        case 'containerSeven':
+          if (_containerSeven == '') {
+            _containerSeven =currentUsing;
+            currentUsing = playerTwoUsing;
+          }
+          break;
+        case 'containerEight':
+          if (_containerEight == '') {
+            _containerEight =currentUsing;
+            currentUsing = playerTwoUsing;
           }
           break;
         default:
+          if (_containerNine == '') {
+            _containerNine =currentUsing;
+            currentUsing = playerTwoUsing;
+          }
       }
-      notifyListeners();
+    
     } else if (currentUsing == playerTwoUsing) {
       switch (value) {
         case 'containerOne':
           if (_containerOne == '') {
             _containerOne =currentUsing;
-            print('_containerOne+');
             currentUsing = playerOneUsing;
-            playingGame;
           }
           break;
         case 'containerTwo':
           if (_containerTwo == '') {
             _containerTwo =currentUsing;
-            print('_containerTwo+');
             currentUsing = playerOneUsing;
-            playingGame;
+          }
+          break;
+        case 'containerThree':
+          if (_containerThree == '') {
+            _containerThree =currentUsing;
+            currentUsing = playerOneUsing;
+          }
+          break;
+        case 'containerFour':
+          if (_containerFour == '') {
+            _containerFour =currentUsing;
+            currentUsing = playerOneUsing;
+          }
+          break;
+        case 'containerFive':
+          if (_containerFive == '') {
+            _containerFive =currentUsing;
+            currentUsing = playerOneUsing;
+          }
+          break;
+        case 'containerSix':
+          if (_containerSix == '') {
+            _containerSix =currentUsing;
+            currentUsing = playerOneUsing;
+          }
+          break;
+        case 'containerSeven':
+          if (_containerSeven == '') {
+            _containerSeven =currentUsing;
+            currentUsing = playerOneUsing;
+          }
+          break;
+        case 'containerEight':
+          if (_containerEight == '') {
+            _containerEight =currentUsing;
+            currentUsing = playerOneUsing;
           }
           break;
         default:
+          if (_containerNine == '') {
+            _containerNine =currentUsing;
+            currentUsing = playerOneUsing;
+          }
       }
-    notifyListeners();
     }
+    notifyListeners();
     // else {
     //   currentUsing = playerOneUsing;
     // }
   }
+
+
   int get scoreA => _scoreA;
   int get scoreB => _scoreB;
   String get containerone => _containerOne;
