@@ -21,209 +21,221 @@ class _RegistrationPageState extends State<RegistrationPage> {
       create: ((context) => AppData()),
       builder: (context, child){
         return Scaffold(
+          
         body: SingleChildScrollView(
           physics: const ScrollPhysics(),
-          child: SafeArea(
-            child: Center(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: size.height*0.10,
-                  ),
-                  Column(
-                    children: [
-                      const Text(
-                        'Player One',
-                        style: TextStyle(
-                          color: textColor,
-                          fontSize: 35,
-                          fontWeight: FontWeight.w600
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('src/images/R-removebg-preview.png'),
+                fit: BoxFit.cover,
+                alignment: Alignment.bottomCenter,
+                opacity: 0.18
+              )
+            ),
+            child: SafeArea(
+              child: Center(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: size.height*0.10,
+                    ),
+                    Column(
+                      children: [
+                        const Text(
+                          'Player One',
+                          style: TextStyle(
+                            color: textColor,
+                            fontSize: 35,
+                            fontWeight: FontWeight.w600
+                          ),
                         ),
-                      ),
-                      const Text(
-                        'Please fill this section'
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 15
+                        const Text(
+                          'Please fill this section'
                         ),
-                        child: Row(
-                          children: [
-                            const Text(
-                              'Name:',
-                              style: TextStyle(
-                                color: textColor
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15
+                          ),
+                          child: Row(
+                            children: [
+                              const Text(
+                                'Name:',
+                                style: TextStyle(
+                                  color: textColor
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 20.0),
-                                child: TextField(
-                                  onChanged: ((value) {
-                                    context.read<AppData>().playersDetail(value, 'playerOneName');
-                                  }),
-                                  maxLength: 10,
-                                  decoration: const InputDecoration(
-                                    contentPadding: EdgeInsets.symmetric(
-                                      vertical: 0,
-                                      horizontal: 10
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 20.0),
+                                  child: TextField(
+                                    onChanged: ((value) {
+                                      print(size.width);
+                                      context.read<AppData>().playersDetail(value, 'playerOneName');
+                                    }),
+                                    maxLength: 10,
+                                    decoration: const InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(
+                                        vertical: 0,
+                                        horizontal: 10
+                                      ),
+                                      hintText: 'John',
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38
+                                      ),
+                                      focusedBorder: InputBorder.none
                                     ),
-                                    hintText: 'John',
-                                    hintStyle: TextStyle(
-                                      color: Color(0XFFCDCDCD)
-                                    ),
-                                    focusedBorder: InputBorder.none
                                   ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            const Text(
-                              'Using:',
-                              style: TextStyle(
-                                color: textColor
+                              const SizedBox(
+                                width: 15,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 20.0),
-                                child: TextField(
-                                  onChanged: ((value) {
-                                    context.read<AppData>().playersDetail(value, 'playerOneUsing');
-                                  }),
-                                  maxLength: 1,
-                                  decoration: const InputDecoration(
-                                    contentPadding: EdgeInsets.symmetric(
-                                      vertical: 0,
-                                      horizontal: 10
+                              const Text(
+                                'Using:',
+                                style: TextStyle(
+                                  color: textColor
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 20.0),
+                                  child: TextField(
+                                    onChanged: ((value) {
+                                      context.read<AppData>().playersDetail(value, 'playerOneUsing');
+                                    }),
+                                    maxLength: 1,
+                                    decoration: const InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(
+                                        vertical: 0,
+                                        horizontal: 10
+                                      ),
+                                      hintText: 'O',
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38
+                                      ),
+                                      focusedBorder: InputBorder.none
                                     ),
-                                    hintText: 'O',
-                                    hintStyle: TextStyle(
-                                      color: Color(0XFFCDCDCD)
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: size.height*0.16,
+                      // child: Consumer<AppData>(
+                      // builder: ((context, value, child) {
+                      //   return Column(
+                      //     children: [
+                      //       Text(value.playerOneName == '' ? 'load': value.playerTwoName),
+                      //       Text(value.playerOneName == '' ? 'load': value.playerTwoUsing),
+                      //       Text(value.playerOneName == '' ? 'load': value.playerOneName),
+                      //       Text(value.playerOneName == '' ? 'load': value.playerOneUsing),
+                      //     ],
+                      //   );
+                      // }),
+                      // ),
+                    ),
+                    Column(
+                      children: [
+                        const Text(
+                          'Player Two',
+                          style: TextStyle(
+                            color: textColor,
+                            fontSize: 35,
+                            fontWeight: FontWeight.w600
+                          ),
+                        ),
+                        const Text(
+                          'Please fill this section'
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15
+                          ),
+                          child: Row(
+                            children: [
+                              const Text(
+                                'Name:',
+                                style: TextStyle(
+                                  color: textColor
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 20.0),
+                                  child: TextField(
+                                    onChanged: ((value) {
+                                      context.read<AppData>().playersDetail(value, 'playerTwoName');
+                                    }),
+                                    maxLength: 10,
+                                    decoration: const InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(
+                                        vertical: 0,
+                                        horizontal: 10
+                                      ),
+                                      hintText: 'Beloved',
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38
+                                      ),
+                                      focusedBorder: InputBorder.none
                                     ),
-                                    focusedBorder: InputBorder.none
                                   ),
                                 ),
                               ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: size.height*0.16,
-                    // child: Consumer<AppData>(
-                    // builder: ((context, value, child) {
-                    //   return Column(
-                    //     children: [
-                    //       Text(value.playerOneName == '' ? 'load': value.playerTwoName),
-                    //       Text(value.playerOneName == '' ? 'load': value.playerTwoUsing),
-                    //       Text(value.playerOneName == '' ? 'load': value.playerOneName),
-                    //       Text(value.playerOneName == '' ? 'load': value.playerOneUsing),
-                    //     ],
-                    //   );
-                    // }),
-                    // ),
-                  ),
-                  Column(
-                    children: [
-                      const Text(
-                        'Player Two',
-                        style: TextStyle(
-                          color: textColor,
-                          fontSize: 35,
-                          fontWeight: FontWeight.w600
-                        ),
-                      ),
-                      const Text(
-                        'Please fill this section'
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 15
-                        ),
-                        child: Row(
-                          children: [
-                            const Text(
-                              'Name:',
-                              style: TextStyle(
-                                color: textColor
+                              const SizedBox(
+                                width: 15,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 20.0),
-                                child: TextField(
-                                  onChanged: ((value) {
-                                    context.read<AppData>().playersDetail(value, 'playerTwoName');
-                                  }),
-                                  maxLength: 10,
-                                  decoration: const InputDecoration(
-                                    contentPadding: EdgeInsets.symmetric(
-                                      vertical: 0,
-                                      horizontal: 10
-                                    ),
-                                    hintText: 'Beloved',
-                                    hintStyle: TextStyle(
-                                      color: Color(0XFFCDCDCD)
-                                    ),
-                                    focusedBorder: InputBorder.none
-                                  ),
+                              const Text(
+                                'Using:',
+                                style: TextStyle(
+                                  color: textColor
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            const Text(
-                              'Using:',
-                              style: TextStyle(
-                                color: textColor
+                              const SizedBox(
+                                width: 10,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 20.0),
-                                child: TextField(
-                                  onChanged: (value) {
-                                    context.read<AppData>().playersDetail(value, 'playerTwoUsing');
-                                  },
-                                  maxLength: 1,
-                                  decoration: const InputDecoration(
-                                    contentPadding: EdgeInsets.symmetric(
-                                      vertical: 0,
-                                      horizontal: 10
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 20.0),
+                                  child: TextField(
+                                    onChanged: (value) {
+                                      context.read<AppData>().playersDetail(value, 'playerTwoUsing');
+                                    },
+                                    maxLength: 1,
+                                    decoration: const InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(
+                                        vertical: 0,
+                                        horizontal: 10
+                                      ),
+                                      hintText: 'X',
+                                      hintStyle: TextStyle(
+                                        color: Colors.black38
+                                      ),
+                                      focusedBorder: InputBorder.none
                                     ),
-                                    hintText: 'X',
-                                    hintStyle: TextStyle(
-                                      color: Color(0XFFCDCDCD)
-                                    ),
-                                    focusedBorder: InputBorder.none
                                   ),
                                 ),
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  )
-                ],
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),

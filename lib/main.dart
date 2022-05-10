@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 1), () {
+    Timer(const Duration(seconds: 8), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context)=> 
@@ -58,38 +58,39 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: textColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            SizedBox(height: 10,),
-            Text(
+          children: [
+            const SizedBox(height: 15,),
+            const Text(
               'TIC TAC TOA',
               style: TextStyle(
-                fontSize: 45,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+                fontSize: 47,
+                fontWeight: FontWeight.w900,
+                color: Color(0XFFF0CC08),
                 letterSpacing: 5,
                 shadows: [
                   BoxShadow(
-                    color: textColor,
-                    blurRadius: 20
+                    color: Colors.white,
+                    blurRadius: 10,
+                    offset: Offset(1, 2)
                   )
                 ]
               ),
             ),
-            Text(
+            const Text(
               'GAME',
               style: TextStyle(
-                color: textColor,
-                fontSize: 18,
+                color: backgroundColor,
+                fontSize: 19,
                 letterSpacing: 3,
                 fontStyle: FontStyle.italic,
               ),
             ),
-            SizedBox(height: 20,),
-            
+            const SizedBox(height: 20,),
+            Image.asset('src/images/giphy.gif')
           ],
         ),
       ),

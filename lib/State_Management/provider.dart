@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 class AppData with ChangeNotifier {
-  final int _scoreA = 0;
+  int _scoreA = 0;
   final int _scoreB = 0;
   static String playerOneName = '';
   static String playerOneUsing = '';
@@ -160,12 +160,28 @@ class AppData with ChangeNotifier {
           }
       }
     }
+    checkGame();
     notifyListeners();
     // else {
     //   currentUsing = playerOneUsing;
     // }
   }
 
+        
+  void checkGame() {
+  var checkOne = (_containerOne == playerOneUsing) && (_containerFive == playerOneUsing) && _containerNine == playerOneUsing;
+    if (currentUsing == playerOneUsing) {
+      if (
+        checkOne 
+      ) {
+        _scoreA++;
+      } else {
+      }
+    } else {
+    }
+    // notifyListeners();
+  }
+  
 
   int get scoreA => _scoreA;
   int get scoreB => _scoreB;

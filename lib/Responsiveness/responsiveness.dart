@@ -43,8 +43,8 @@ class _RegistrationResponsivenessState extends State<RegistrationResponsiveness>
           return const RegistrationPage();
         }
         else {
-          return const RegistrationPage();
-          // return const TabletRegistrationPage();
+          // return const RegistrationPage();
+          return const TabletRegistrationPage();
         }
       })
     );
