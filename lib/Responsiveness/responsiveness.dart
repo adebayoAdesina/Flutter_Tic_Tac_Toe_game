@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/Screens/mobile.dart';
 import 'package:tic_tac_toe/Screens/tablet.dart';
+import 'package:tic_tac_toe/State_Management/provider.dart';
 import 'package:tic_tac_toe/Views/Tablet/tablet_registration_page.dart';
 import 'package:tic_tac_toe/Views/Mobile/registration_page.dart';
+import 'package:tic_tac_toe/Views/game.dart';
 
 class Responsiveness extends StatefulWidget {
   const Responsiveness({ Key? key }) : super(key: key);
@@ -40,7 +42,14 @@ class _RegistrationResponsivenessState extends State<RegistrationResponsiveness>
     return LayoutBuilder(
       builder: ((context, constraints) {
         if (constraints.maxWidth < 600) {
-          return const RegistrationPage();
+          if (
+            AppData.playerOneName != '' && AppData.playerOneUsing != '' &&
+            AppData.playerTwoName != '' && AppData.playerTwoUsing != ''
+          ) {
+            return const Game();
+          } else {
+            return const RegistrationPage();
+          }
         }
         else {
           // return const RegistrationPage();

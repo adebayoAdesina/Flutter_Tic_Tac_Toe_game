@@ -1,29 +1,24 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 
 class AppData with ChangeNotifier {
-  int _scoreA = 0;
-  final int _scoreB = 0;
+  int scoreA = 0;
+  int scoreB = 0;
   static String playerOneName = '';
   static String playerOneUsing = '';
   static String playerTwoName = '';
   static String playerTwoUsing = '';
   static String currentUsing = '';
 
-  List totalPlayers = [
+  List totalPlayers = [];
 
-  ];
-  
-  Object player = {
-    
-  };
+  Object player = {};
 
   void playersDetail(String value, String whichFilled) {
     switch (whichFilled) {
       case 'playerOneName':
         playerOneName = value;
         break;
-      case 'playerOneUsing' :
+      case 'playerOneUsing':
         playerOneUsing = value;
         break;
       case 'playerTwoName':
@@ -35,6 +30,7 @@ class AppData with ChangeNotifier {
     }
     notifyListeners();
   }
+
   String _containerOne = '';
   String _containerTwo = '';
   String _containerThree = '';
@@ -44,118 +40,123 @@ class AppData with ChangeNotifier {
   String _containerSeven = '';
   String _containerEight = '';
   String _containerNine = '';
+  late bool checkBool = true;
+  var checkOne;
 
-  void playingGame(String value) {
-    if (currentUsing == playerOneUsing) {
+  void playingGame(String value) async {
+    checkOne = (_containerOne == playerOneUsing) &&
+        (_containerFive == playerOneUsing) &&
+        (_containerNine == playerOneUsing);
+
+    if (currentUsing == playerOneUsing && checkBool == true) {
       switch (value) {
         case 'containerOne':
           if (_containerOne == '') {
-            _containerOne =currentUsing;
+            _containerOne = currentUsing;
             currentUsing = playerTwoUsing;
           }
           break;
         case 'containerTwo':
           if (_containerTwo == '') {
-            _containerTwo =currentUsing;
+            _containerTwo = currentUsing;
             currentUsing = playerTwoUsing;
           }
           break;
         case 'containerThree':
           if (_containerThree == '') {
-            _containerThree =currentUsing;
+            _containerThree = currentUsing;
             currentUsing = playerTwoUsing;
           }
           break;
         case 'containerFour':
           if (_containerFour == '') {
-            _containerFour =currentUsing;
+            _containerFour = currentUsing;
             currentUsing = playerTwoUsing;
           }
           break;
         case 'containerFive':
           if (_containerFive == '') {
-            _containerFive =currentUsing;
+            _containerFive = currentUsing;
             currentUsing = playerTwoUsing;
           }
           break;
         case 'containerSix':
           if (_containerSix == '') {
-            _containerSix =currentUsing;
+            _containerSix = currentUsing;
             currentUsing = playerTwoUsing;
           }
           break;
         case 'containerSeven':
           if (_containerSeven == '') {
-            _containerSeven =currentUsing;
+            _containerSeven = currentUsing;
             currentUsing = playerTwoUsing;
           }
           break;
         case 'containerEight':
           if (_containerEight == '') {
-            _containerEight =currentUsing;
+            _containerEight = currentUsing;
             currentUsing = playerTwoUsing;
           }
           break;
         default:
           if (_containerNine == '') {
-            _containerNine =currentUsing;
+            _containerNine = currentUsing;
             currentUsing = playerTwoUsing;
           }
       }
-    
     } else if (currentUsing == playerTwoUsing) {
       switch (value) {
         case 'containerOne':
           if (_containerOne == '') {
-            _containerOne =currentUsing;
+            _containerOne = currentUsing;
             currentUsing = playerOneUsing;
           }
           break;
         case 'containerTwo':
           if (_containerTwo == '') {
-            _containerTwo =currentUsing;
+            _containerTwo = currentUsing;
             currentUsing = playerOneUsing;
           }
           break;
         case 'containerThree':
           if (_containerThree == '') {
-            _containerThree =currentUsing;
+            _containerThree = currentUsing;
             currentUsing = playerOneUsing;
           }
           break;
         case 'containerFour':
           if (_containerFour == '') {
-            _containerFour =currentUsing;
+            _containerFour = currentUsing;
             currentUsing = playerOneUsing;
           }
           break;
         case 'containerFive':
           if (_containerFive == '') {
-            _containerFive =currentUsing;
+            _containerFive = currentUsing;
             currentUsing = playerOneUsing;
           }
           break;
         case 'containerSix':
           if (_containerSix == '') {
-            _containerSix =currentUsing;
+            _containerSix = currentUsing;
             currentUsing = playerOneUsing;
           }
           break;
         case 'containerSeven':
           if (_containerSeven == '') {
-            _containerSeven =currentUsing;
+            _containerSeven = currentUsing;
             currentUsing = playerOneUsing;
           }
           break;
         case 'containerEight':
           if (_containerEight == '') {
-            _containerEight =currentUsing;
+            _containerEight = currentUsing;
             currentUsing = playerOneUsing;
           }
           break;
         default:
           if (_containerNine == '') {
-            _containerNine =currentUsing;
+            _containerNine = currentUsing;
             currentUsing = playerOneUsing;
           }
       }
@@ -167,24 +168,55 @@ class AppData with ChangeNotifier {
     // }
   }
 
-        
   void checkGame() {
-  var checkOne = (_containerOne == playerOneUsing) && (_containerFive == playerOneUsing) && _containerNine == playerOneUsing;
-    if (currentUsing == playerOneUsing) {
-      if (
-        checkOne 
-      ) {
-        _scoreA++;
-      } else {
+    if (currentUsing == playerOneUsing && checkBool == true) {
+      if (checkOne) {
+        checkBool = false;
+        scoreA = scoreA + 1;
+        print(scoreA);
       }
-    } else {
-    }
+    } else {}
     // notifyListeners();
   }
-  
 
-  int get scoreA => _scoreA;
-  int get scoreB => _scoreB;
+  void restartGame() {
+    _containerOne = '';
+    _containerTwo = '';
+    _containerThree = '';
+    _containerFour = '';
+    _containerFive = '';
+    _containerSix = '';
+    _containerSeven = '';
+    _containerEight = '';
+    _containerNine = '';
+    checkBool = true;
+    notifyListeners();
+  }
+
+  void endGame() {
+    _containerOne = '';
+    _containerTwo = '';
+    _containerThree = '';
+    _containerFour = '';
+    _containerFive = '';
+    _containerSix = '';
+    _containerSeven = '';
+    _containerEight = '';
+    _containerNine = '';
+    checkBool = true;
+
+    scoreA = 0;
+    scoreB = 0;
+    playerOneName = '';
+    playerOneUsing = '';
+    playerTwoName = '';
+    playerTwoUsing = '';
+    currentUsing = '';
+    notifyListeners();
+  }
+
+  // // int get scoreA => _scoreA;
+  // int get scoreB => _scoreB;
   String get containerone => _containerOne;
   String get containerTwo => _containerTwo;
   String get containerThree => _containerThree;
