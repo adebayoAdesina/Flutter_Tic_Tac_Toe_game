@@ -18,7 +18,7 @@ class _ResponsivenessState extends State<Responsiveness> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: ((context, constraints) {
-        if (constraints.maxWidth < 600) {
+        if (constraints.maxWidth < 900) {
           return const MobileScreen();
         }
         else {
@@ -41,7 +41,7 @@ class _RegistrationResponsivenessState extends State<RegistrationResponsiveness>
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: ((context, constraints) {
-        if (constraints.maxWidth < 600) {
+        if (constraints.maxWidth < 900) {
           if (
             AppData.playerOneName != '' && AppData.playerOneUsing != '' &&
             AppData.playerTwoName != '' && AppData.playerTwoUsing != ''
