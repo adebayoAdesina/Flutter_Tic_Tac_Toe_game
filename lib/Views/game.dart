@@ -37,7 +37,7 @@ class _GameState extends State<Game> {
                             context.read<AppData>().restartGame();
                           },
                           child: const Text('Next')),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       ElevatedButton(
@@ -48,7 +48,7 @@ class _GameState extends State<Game> {
                           child: const Text('Restart')),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(

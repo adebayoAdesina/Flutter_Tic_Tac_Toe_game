@@ -1,5 +1,17 @@
 import 'package:flutter/cupertino.dart';
 
+enum MyChecker {
+  checkOne,
+  checkTwo,
+  checkThree,
+  checkFour,
+  checkFive,
+  checkSix,
+  checkSeven,
+  checkEight,
+  checkNine,
+}
+
 class AppData with ChangeNotifier {
   int scoreA = 0;
   int scoreB = 0;
@@ -40,14 +52,10 @@ class AppData with ChangeNotifier {
   String _containerSeven = '';
   String _containerEight = '';
   String _containerNine = '';
-  late bool checkBool = true;
-  var checkOne;
+  bool checkBool = true;
+  bool? checkOne;
 
   void playingGame(String value) async {
-    checkOne = (_containerOne == playerOneUsing) &&
-        (_containerFive == playerOneUsing) &&
-        (_containerNine == playerOneUsing);
-
     if (currentUsing == playerOneUsing && checkBool == true) {
       switch (value) {
         case 'containerOne':
@@ -104,7 +112,7 @@ class AppData with ChangeNotifier {
             currentUsing = playerTwoUsing;
           }
       }
-    } else if (currentUsing == playerTwoUsing) {
+    } else if (currentUsing == playerTwoUsing && checkBool == true) {
       switch (value) {
         case 'containerOne':
           if (_containerOne == '') {
@@ -161,6 +169,10 @@ class AppData with ChangeNotifier {
           }
       }
     }
+    checkOne = (_containerOne == playerOneUsing) &&
+        (_containerFive == playerOneUsing) &&
+        (_containerNine == playerOneUsing);
+
     checkGame();
     notifyListeners();
     // else {
@@ -168,15 +180,23 @@ class AppData with ChangeNotifier {
     // }
   }
 
+  MyChecker? checkers;
   void checkGame() {
-    if (currentUsing == playerOneUsing && checkBool == true) {
-      if (checkOne) {
-        checkBool = false;
-        scoreA = scoreA + 1;
-        print(scoreA);
-      }
-    } else {}
-    // notifyListeners();
+    print(checkOne);
+    if (checkBool == checkOne) {
+      scoreA = scoreA + 1;
+      checkBool = false;
+      // checkers = 'checkOne';
+      print(scoreA);
+    }
+  }
+
+  MyChecker checks(MyChecker checks) {
+    if (checks =) {
+      
+    } else {
+    }
+    return checks;
   }
 
   void restartGame() {
